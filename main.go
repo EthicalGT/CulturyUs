@@ -297,8 +297,8 @@ func main() {
 		rand.Seed(time.Now().UnixNano())
 		otp := rand.Intn(900000) + 100000
 		fmt.Println("OTP is :", otp)
-		from := "mypyschbuddy@gmail.com"
-		pwd := "aoclddetchfgkscg"
+		from := "abc@gmail.com"
+		pwd := "null"
 		to := []string{c.FormValue("tb2")}
 		smtphost := "smtp.gmail.com"
 		port := "587"
@@ -1009,8 +1009,8 @@ func main() {
 
 	e.POST("/requestBookingGuide", func(c echo.Context) error {
 
-		from := "mypyschbuddy@gmail.com"
-		pwd := "aoclddetchfgkscg"
+		from := "abc@gmail.com"
+		pwd := "null"
 		smtphost := "smtp.gmail.com"
 		port := "587"
 

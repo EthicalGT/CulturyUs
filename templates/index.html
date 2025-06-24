@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul>
+                        <li onclick="hideI()">Sign In</li>
+                        <li onclick="hideII()">Sign UP</li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="form-container" id="signinform">
+            <div class="form-div">
+            <h3>Welcome Back!</h3>
+            <br>
+            <form action="/signin" method="POST" name="myformI" onsubmit="return validateI()">
+                <div class="lbl">
+                <label for="tb1">Email: </label>
+                </div>
+                <input type="email" name="tb1" required>
+                <div class="lbl">
+                    <label for="tb2">Password: </label>
+                </div>
+                <input type="password" name="tb2" required>
+                <br>
+                <input type="submit" value="Log In">
+                <div class="lbl2">
+                    <a href="">Forgot your password ?</a>
+                </div>
+                <div class="lbl2">
+                    <a onclick="hideII()">New User ? | Sign Up</a>
+                </div>
+            </form>
+            </div>
+            </div>
+            <div class="form-container2" id="signupform">
+                <div class="form-div">
+                <h3>Welcome, Registration Awaits!</h3>
+                <br>
+                <form action="/register" method="POST" name="myformII" onsubmit="return validateII()">
+                    <div class="lbl">
+                    <label for="tb1">Fullname: </label>
+                    </div>
+                    <input type="text" name="tb1" required>
+                    <div class="lbl">
+                    <label for="tb2">Email: </label>
+                    </div>
+                    <input type="email" name="tb2" required>
+                    <div class="lbl">
+                    <label for="tb3">Date of Birth: </label>
+                    </div>
+                    <input type="date" name="tb3" required>
+                    <div class="lbl">
+                    <label for="tb4">Address: </label>
+                    </div>
+                    <textarea name="tb4" required></textarea>
+                    <div class="lbl">
+                        <label for="tb5">Contact No: </label>
+                    </div>
+                    <input type="number" name="tb5" required>
+                    <div class="lbl">
+                        <label for="tb6">Password: </label>
+                    </div>
+                    <input type="password" name="tb6">
+                    <br>
+                    <input type="submit" value="Proceed">
+                </form>
+                </div>
+                </div>
+    </main>
+    <footer>
+        <p>Crafted with <span>&hearts;</span> by GT</p>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

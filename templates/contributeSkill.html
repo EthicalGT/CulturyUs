@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">GIA</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skillshop
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+            <div class="skillform-container">
+                <div class="skillform-div" id="skillform-div">
+                <h3>Welcome, Contribution Awaits!</h3>
+                <br>
+                <form action="/contributeSkillAction" method="POST" name="myform" onsubmit="return contributionValidate()" enctype="multipart/form-data">
+                    <div class="lbl">
+                    <label for="tb1">Skill Name: </label>
+                    </div>
+                    <input type="text" name="tb1" required>
+                    <div class="lbl">
+                    <label for="tb2">Skill Desc: </label>
+                    </div>
+                    <textarea name="tb2" required></textarea>
+                    <div class="lbl">
+                    <label for="tb3">Skill Type: </label>
+                    </div>
+                    <select name="tb3" required>
+                        <option value="Rangoli Design">Rangoli Design</option>
+                        <option value="Indian Classical Dance">Indian Classical Dance</option>
+                        <option value="Sitar & Indian Classical Music">Sitar & Indian Classical Music</option>
+                        <option value="Modern Dance Styles">Modern Dance Styles</option>
+                        <option value="Learning to Read Sanskrit">Learning to Read Sanskrit</option>
+                        <option value="Vedic Astrology">Vedic Astrology</option>
+                        <option value="Veda And Meditation Techniques">Veda And Meditation Techniques</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Learning Indian Languages">Learning Indian Languages</option>
+                        <option value="Basic Language Skills for Travel & Communication">Basic Language Skills for Travel & Communication</option>
+                        <option value="Accent Improvement in Local and Foreign Languages">Accent Improvement in Local and Foreign Languages</option>
+                        <option value="Learning Technolgical Languages">Learning Technolgical Languages</option>
+                        <option value="Understanding Indian History & Culture">Understanding Indian History & Culture</option>
+                        <option value="Traditional Indian Handicrafts">Traditional Indian Handicrafts</option>
+                        <option value="Indian Folk Art">Indian Folk Art</option>
+                        <option value="Hosting Indian Festivals & Rituals">Hosting Indian Festivals & Rituals</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <div class="lbl">
+                    <label for="tb4">Media Type: </label>
+                    </div>
+                    <select name="tb4" required>
+                        <option value="Video">Video</option>
+                        <option value="Video">Audio</option>
+                        <option value="Video">Document</option>
+                    </select>
+                    <div class="lbl">
+                        <label for="tb5">Language Of Instructions: </label>
+                    </div>
+                    <select name="tb5" required>
+                        <option value="Hindi">Hindi</option>
+                        <option value="English">English</option>
+                        <option value="Marathi">Marathi</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="lbl">
+                        <label for="tb6">Select File: </label>
+                    </div>
+                    <input type="file" name="tb6" required>
+                    <br>
+                    <input type="submit" value="Contribute">
+                    <div class="lbl">
+                        <p onclick="revealInfo()">Why Contribute Your Skills ?</p>
+                    </div>
+                    <br>
+                </form>
+                </div>
+                <div class="contribution-info" id="contribution-info">
+                    <h2>"Your Contribution Matters!"</h2>
+                    <p>By uploading your skills to Culturyus, you become part of a movement to preserve and share cultural heritage with the world. Your contribution helps inspire others to learn, appreciate, and carry forward traditions that might otherwise be forgotten. Whether you're showcasing a unique art form, craft, or talent, every skill you share enriches the global tapestry of culture and connects people across generations and borders.</p>
+                    <h5>Warm Regards<br>CulturyUs</h5>
+                    <button onclick="hideInfo()">Got It!</button>
+                </div>
+                </div>
+    </main>
+    <footer>
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/effortlessgt?igsh=MW10azA5aTBkaTYxbA=="><img src="/static/img/instagram.png" alt="instagram"></a>
+            <a href="https://wa.me/qr/TTCPPLO4MHO3B1"><img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp"></a>
+            <a href="https://github.com/EthicalGT?fbclid=PAZXh0bgNhZW0CMTEAAaYkRZs0dKtG1Kbx9kYW6MYHVpMAdLTGSBGJr8u3emIBRrJ72ytOWDZjuwg_aem_fj9EEMhqM8mIrldi3uq-2Q"><img src="/static/img/github.png" alt="github"></a>
+        </div>
+        <p>Crafted with <span>&hearts;</span> by GT</p>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

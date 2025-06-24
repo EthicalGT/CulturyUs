@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs - Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">GIA</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skillshop
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="main-container">
+            {{if . }} 
+        <div class="profile-container">
+            <div class="profile-info">
+                <img src={{.data.Profilepic}} alt="Profile Picture">
+                <h2>{{.data.Fullname}}</h2>
+                <h5>{{.data.Bio}}</h5>
+                
+            </div>
+            <div class="action-container">
+                <button onclick="myhideI()" id="info">Information</button>
+                <button onclick="myhideII()" id="skills">Skills & Orders</button>
+                <button onclick="myhideIII()" id="wallet">Wallet</button>
+                <button onclick="myhideIV()" id="guide">Guide</button>
+            </div>
+            
+            <div class="personal-info" id="div1">
+                <h4>Fullname: </h4>
+                <p>{{.data.Fullname}}</p>
+                <h4>Email: </h4>
+                <p>{{.data.Email}}</p>
+                <h4>Date of Birth: </h4>
+                <p>{{.data.DOB}}</p>
+                <h4>Address: </h4>
+                <p>{{.data.Addr}}</p>
+                <h4>Contact No :</h4>
+                <p>{{.data.ContactNo}}</p>
+                <button id="editformopenbtn" onclick="showUpdateForm()">Edit Profile</button>
+                <button id="editformclosebtn" onclick="closeUpdateForm()">Close</button>
+                <div class="editProfileForm" id="editProfileForm">
+                    <form name="myform" action="/changeProfile" method="POST" enctype="multipart/form-data" onsubmit="return profileValidation()">
+                        <h3>Update Profile</h3>
+                        <label for="tb1">Name: </label>
+                        <br>
+                        <input type="text" name="tb1" required>
+                        <br>
+                        <label for="tb2">Address: </label>
+                        <br>
+                        <textarea name="tb2" required></textarea>
+                        <br>
+                        <label for="tb3">Contact No: </label>
+                        <br>
+                        <input type="number" name="tb3" required>
+                        <br>
+                        <label for="tb4">Bio: </label>
+                        <br>
+                        <textarea name="tb4" required></textarea>
+                        <br>
+                        <label for="tb5">Profile Picture: </label>
+                        <br>
+                        <input type="file" name="tb5" required>
+                        <br>
+                        <input type="submit" name="submit" value="Save Changes">
+                    </form>
+                </div>
+            </div>
+            <div class="skills-info" id="div2">
+                {{if .data4}}
+                    <h4>Your acquired skills on CulturyUs</h4>
+                    <ol>
+                        {{range .data4}}
+                            <li>{{.Skillname}}</li>
+                        {{end}}
+                    </ol>
+                {{else}}
+                    <p>No Skill Acquired yet!</p>
+                {{end}}
+            </div>
+            
+            <div class="wallet-info" id="div3">
+                <h4>Your Current SkillCoins: {{.data.SkillCoins}}</h4>
+                <details>
+                    <summary>What Are Skillcoins and Why Are They Important?</summary>
+                        <p>Skillcoin is a virtual currency used within the Culturyus platform to promote skill-sharing, contribution, and learning. Whether you're an expert looking to share your knowledge or a learner acquiring new skills, Skillcoins play a pivotal role in your journey. They act as a medium of exchange, allowing users to interact, contribute, and benefit from the ecosystem.
+                        
+                            Skillcoins serve multiple purposes:
+                            
+                            Access to Learning: Unlock advanced tutorials, courses, or mentorship programs.
+                            Recognition of Contribution: Earn rewards by sharing your expertise.
+                            Societal Impact: Skillcoins symbolize your active role in enriching the community.
+                       </p>
+                </details>
+                <h2>💰 SkillCoin Top-Up – Get More Skills, Instantly! 💰</h2>
+                <p> 
+                    Recharge your SkillCoins effortlessly and unlock a world of learning and skill exchange. With 1 SkillCoin = ₹1, you get full value for your money!
+                    <br>
+                    🔹 Instant Top-Up – No waiting, get your SkillCoins instantly.<br>
+                    🔹 Fair & Transparent – No hidden charges, no confusing conversions.<br>
+                    🔹 Unlock Premium Skills – Use SkillCoins to learn from experts.<br>
+                    🔹 Secure Payments – Trusted and safe transactions with EthicalPay.</p>
+                <br><b>Earn SkillCoins: </b>
+                <a href="/contributeSkills"><button>Add Contribution</button></a>
+                <a href="/scpurchase"><button>Top-Up SkillCoins</button></a>
+            </div>
+            <div class="upgrade-info" id="div4">
+                {{if .data2.Experience}}
+        {{if .data3.Msg}}
+        <div class="booking-request">
+            <h3>New Booking Request</h3>
+            <p><b>Date & Time:</b> {{.data3.Datetime}}</p>
+            <p><b>User Email:</b> {{.data3.UserEmail}}</p>
+            <p><b>Message:</b> {{.data3.Msg}}</p>
+            <div class="actionbtn-containers">
+            <button onclick="bookingAccepted()">Accept</button>
+            <button onclick="bookingRejected()">Decline</button>
+            <form id="rejectForm" action="/bookingRejected" method="POST">
+                <input type="hidden" name="uemail" value={{.data3.UserEmail}}>
+                <input type="hidden" name="msg" id="msg">
+            </form>
+            <form id="acceptForm" action="/bookingAccepted" method="POST">
+                <input type="hidden" name="uemail" value={{.data3.UserEmail}}>
+                <input type="hidden" name="gemail" value={{.data3.GuideEmail}}>
+            </form>
+            </div>
+        </div>
+        {{else}}
+        <p>No Booking Request Yet!</p>
+        {{end}}
+    {{else}}
+                <div class="guideForm">
+                    <h3>Want to Become CulturyUs Guide!</h3>
+                    <br>
+                    <form action="/registerGuide" method="POST" name="myformII" onsubmit="return validateIII()" enctype="multipart/form-data">
+                        <div class="lbl">
+                        <label for="tb1">Experience: </label>
+                        </div>
+                        <input type="text" name="tb1" required>
+                        <div class="lbl">
+                        <label for="tb2">Languages Known: </label>
+                        </div>
+                        <input type="text" name="tb2" required>
+                        <div class="lbl">
+                        <label for="tb3">Preffered States: </label>
+                        </div>
+                        <select name="tb3" required>
+                            <option value="">Select a State</option>
+                            <option value="andhra_pradesh">Andhra Pradesh</option>
+                            <option value="arunachal_pradesh">Arunachal Pradesh</option>
+                            <option value="assam">Assam</option>
+                            <option value="bihar">Bihar</option>
+                            <option value="chhattisgarh">Chhattisgarh</option>
+                            <option value="goa">Goa</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="haryana">Haryana</option>
+                            <option value="himachal_pradesh">Himachal Pradesh</option>
+                            <option value="jharkhand">Jharkhand</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="madhya_pradesh">Madhya Pradesh</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="manipur">Manipur</option>
+                            <option value="meghalaya">Meghalaya</option>
+                            <option value="mizoram">Mizoram</option>
+                            <option value="nagaland">Nagaland</option>
+                            <option value="odisha">Odisha</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="sikkim">Sikkim</option>
+                            <option value="tamil_nadu">Tamil Nadu</option>
+                            <option value="telangana">Telangana</option>
+                            <option value="tripura">Tripura</option>
+                            <option value="uttar_pradesh">Uttar Pradesh</option>
+                            <option value="uttarakhand">Uttarakhand</option>
+                            <option value="west_bengal">West Bengal</option>
+                          </select>
+                        <div class="lbl">
+                        <label for="tb4">Expected Charges(per hr/tour): </label>
+                        
+                        </div>
+                        <input type="number" name="tb4">
+                        <div class="lbl">
+                            <label for="tb5">Upload any Identity Proof: </label>
+                        </div>
+                        <input type="file" name="tb5" required>
+                        <div class="lbl">
+                            <label for="tb6">Short Bio: </label>
+                        </div>
+                        <textarea name="tb6" required></textarea>
+                        <br>
+                        <input type="submit" value="Proceed">
+                    </form>
+                    </div>
+                    {{end}}
+            </div>
+            </div>
+            {{end}}
+            </div>
+               
+    </main>
+    <footer>
+        <div class="footer">
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/the_gt_official?igsh=MW10azA5aTBkaTYxbA=="><img src="/static/img/instagram.png" alt="instagram"></a>
+            <a href="https://wa.me/qr/TTCPPLO4MHO3B1"><img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp"></a>
+            <a href="https://github.com/EthicalGT?fbclid=PAZXh0bgNhZW0CMTEAAaYkRZs0dKtG1Kbx9kYW6MYHVpMAdLTGSBGJr8u3emIBRrJ72ytOWDZjuwg_aem_fj9EEMhqM8mIrldi3uq-2Q"><img src="/static/img/github.png" alt="github"></a>
+        </div>
+        <p>Crafted with <span>&hearts;</span> by <a href="">GT</a></p>
+        </div>
+    </footer>
+    <script src="/static/js/script.js">
+    </script>
+</body>
+</html>

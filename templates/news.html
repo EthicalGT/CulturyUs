@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs - Tourist Guide</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                        <ul id="home-navs">
+                            <li><a href="">Home</a></li>
+                            <li><a href="">Forum</a></li>
+                            <li id="tourism">Tourism
+                                <div class="tourism-menu">
+                                    <ul>
+                                        <li><a href="">Home</a></li>
+                                        <li><a href="">Forum</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="">GIA</a></li>
+                            <li id="tourism">Featured
+                                <div class="tourism-menu">
+                                    <ul>
+                                        <li><a href="">History</a></li>
+                                        <li><a href="">Blog</a></li>
+                                        <li><a href="">News</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li id="tourism">Skills
+                                <div class="tourism-menu">
+                                    <ul>
+                                        <li><a href="">Home</a></li>
+                                        <li><a href="">Forum</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="">About us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="main-container">
+            <h2 class="news-tagline">Cultury News - Culture, Travel & Beyond </h2>
+            <div class="news-container">
+                {{if .articles}}
+                    {{range .articles}}
+                        <div class="newsBox">
+                            <img src="{{.ImageURL}}" alt="News Image">
+                            <h3>{{.Title}}</h3>
+                            <b>Author:</b> <p>{{.Author}}</p>
+                            <b>Source:</b> <p>{{.Source}}</p>
+                            <b>Published At:</b> <p>{{.PublishedAt}}</p>
+                            <b>Description:</b> <p>{{.Description}}</p>
+                            <b>Content:</b> <p>{{.Content}}</p>
+                            <a href="{{.ReadMoreURL}}" target="_blank"><button>Read More</button></a>
+                        </div>
+                    {{end}}
+                {{else}}
+                    <p>No news found on Indian culture.</p>
+                {{end}}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <p id="followus">Follow us on</p>
+            <div class="social-links">
+                <img src="/static/img/instagram.png" alt="instagram">
+                <img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp">
+                <img src="/static/img/github.png" alt="github">
+            </div>
+            <p>Crafted with <span>&hearts;</span> by <a href="">GT</a></p>
+        </div>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

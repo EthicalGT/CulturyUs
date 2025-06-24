@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs - Tourist Guide</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Forum</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">GIA</a></li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skills
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        </nav>
+    </header>
+    <main>
+        <div class="main-container">
+            <h3>CulturyUs Tourist Guides...</h3>
+            <div class="guideContainer">
+                {{if .data}}
+                    {{range .data}}
+                    <div class="guideData">
+                        <img src="{{.Profilepic}}" alt="Guide Image">
+                        <div class="guideDesc">
+                            <p>Name: {{.Fullname}}</p>
+                            <p>Experience: {{.Experience}} Years</p>
+                            <p>Languages: {{.Languages}}</p>
+                            <p>Charges (per Tour): Rs. {{.Charges}}</p>
+                            <p>State: {{.Preffered_States}}</p> 
+                            <form action="/requestBookingGuide" method="post">
+                                <input type="hidden" name="guideemail" value={{.Email}}>
+                            <button type="submit">Book Now!</button>
+                            </form>
+                        </div>
+                    </div>
+                    {{end}}
+                {{else}}
+                    <p>No guides available for the selected state.</p>
+                {{end}}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <p id="followus">Follow us on</p>
+            <div class="social-links">
+                <img src="/static/img/instagram.png" alt="instagram">
+                <img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp">
+                <img src="/static/img/github.png" alt="github">
+            </div>
+            <p>Crafted with <span>&hearts;</span> by <a href="">GT</a></p>
+        </div>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="/tourguide">Guide</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="/GIA">GIA</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="/news">News</a></li>
+                                    <li><a href="/forum">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skillshop
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="/skills">SkillShop</a></li>
+                                    <li><a href="">Sell</a></li>
+                                    <li><a href="/marketplace">Marketplace</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="">Cart</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="artpieces-container">
+            <h1>Discover a vibrant marketplace to buy and sell handmade artifacts..!</h1>
+            <p>Step into a world where creativity meets commerce. Our handmade artifacts marketplace is more than just a platform—it's a thriving community that celebrates tradition, craftsmanship, and cultural expression. Whether you're a passionate artisan looking to showcase your skills or a buyer searching for authentic, one-of-a-kind pieces, you've come to the right place. Explore a wide array of handmade treasures—each with its own story, heritage, and personal touch. From intricate woodwork and textiles to eco-friendly decor and ethnic art, this is where art comes alive and finds a home. Join us in supporting local artists, preserving culture, and making meaningful connections through the beauty of handmade creations.</p>
+            </div>
+            <div class="sellartpieces-container">
+                <form method="POST" onsubmit="return validateSellForm()" enctype="multipart/form-data" action="/uploadartpieces">
+                <h2>Your Artpiece, Our Asset!</h2>
+                <label>Artpeice/Product Name: </label>
+                <input type="text" name="tb1" required>
+                <br>
+                <label>Artpeice/Product Description:</label>
+                <textarea name="tb2" required></textarea>
+                <br>
+                <label>Artpeice/Product Price: </label>
+                <input type="text" name="tb3" required>
+                <br>
+                <label>Select Image: </label>
+                <input type="file" name="tb4" required>
+                <br>
+                <input type="submit" value="Submit">
+                </form>
+            </div>
+    </main> 
+    <footer>
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+        <a href="https://www.instagram.com/effortlessgt?igsh=MW10azA5aTBkaTYxbA=="><img src="/static/img/instagram.png" alt="instagram"></a>
+        <a href="https://wa.me/qr/TTCPPLO4MHO3B1"><img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp"></a>
+        <a href="https://github.com/EthicalGT?fbclid=PAZXh0bgNhZW0CMTEAAaYkRZs0dKtG1Kbx9kYW6MYHVpMAdLTGSBGJr8u3emIBRrJ72ytOWDZjuwg_aem_fj9EEMhqM8mIrldi3uq-2Q"><img src="/static/img/github.png" alt="github"></a>
+        </div>
+        
+        <p>Crafted with <span>&hearts;</span> by <a href="https://ethicalgt.github.io/EthicalGT/">GT</a></p>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

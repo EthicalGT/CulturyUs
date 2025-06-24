@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs- SkillPage</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Forum</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">GIA</a></li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skills
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="skill-sharing-container" id="skill-sharing-containerr">
+            <h1>"Explore. Learn. Inspire. – A World of Skills at Your Fingertips!" 🚀</h1>
+            <p>The Skill View page on Culturyus is a dedicated space where users can explore and showcase unique skills, particularly those rooted in India’s rich cultural heritage. Whether it’s a traditional art form, a regional craft, or a modern skill with cultural significance, this page provides a detailed overview of each skill, including its history, significance, and practical applications.<br> <b>Congratulations!</b> You've successfully unlocked <b>{{.Skillname}}</b>! The necessary charges have been deducted from your account. Now, dive in and start learning your new skill. 🚀</p> <p><b>Note:</b> Once you complete this skill, be sure to mark it as <i>Completed</i> to showcase it on your profile and let others see your achievements! 🌟<br><b>Enjoy your learning journey! 💡🔥</b></p>
+<hr>
+            </div>
+            <div class="skills-container">
+                <h3>Creative Art</h3>
+                <div class="skillpage">
+                    {{range .skill}}
+                    <div class="skillpagebox">
+                        <div id="file-container"></div> 
+                        
+                        <h3>{{.Skillname}}</h3>
+                       
+                        <p>
+                            {{.Skilldesc}}
+                        </p>
+                        <p>Uploaded by: {{.Uploader}}</p>
+                        <p>Date: {{.UploadDateTime}}</p>
+                        
+                        <form method="POST" action="">
+                            <input type="hidden" name="email" value="{{.Email}}">
+                            <a href="mailto:{{.Email}}">Connect</a>
+                        </form>
+                    </div>
+                    {{end}}
+                    
+                                </div>
+                            </div>
+                            <a href="/generateCertificate"><button id="generateCertBtn">🎓 Generate Certificate</button></a>
+                            </div>
+                            
+            </div>
+            </div>
+    </main>
+    <footer>
+        <div class="footer">
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+        <img src="/static/img/instagram.png" alt="instagram">
+        <img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp">
+        <img src="/static/img/github.png" alt="github">
+        </div>
+        <p>Crafted with <span>&hearts;</span> by <a href="">GT</a></p>
+        </div>
+    </footer>
+    {{range .skill}}
+    <script>
+        let filePath = "{{ .Mediapath}}"; 
+        let fileContainer = document.getElementById("file-container");
+        let fileExtension = filePath.split('.').pop().toLowerCase();
+        if (["mp4", "webm", "ogg"].includes(fileExtension)) {
+            fileContainer.innerHTML = `<video controls><source src="${filePath}" type="video/${fileExtension}"></video>`;
+        } else if (["mp3", "wav", "ogg"].includes(fileExtension)) {
+            fileContainer.innerHTML = `<audio controls><source src="${filePath}" type="audio/${fileExtension}"></audio>`;
+        } else if (["jpg", "jpeg", "png", "gif", "bmp", "svg"].includes(fileExtension)) {
+            fileContainer.innerHTML = `<img src="${filePath}" alt="Uploaded Image" style="max-width: 100%; height: auto;">`;
+        } else if (fileExtension === "pdf") {
+            fileContainer.innerHTML = `<a href="${filePath}" target="_blank"><button>View File</button></a>`;
+        } else {
+            fileContainer.innerHTML = `<a href="${filePath}" download><button>Download File</button></a>`;
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+    const fadeElements = document.querySelectorAll("body *");
+
+    const fadeInOnScroll = () => {
+        fadeElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 1.0) {
+                element.style.opacity = 1;
+                element.style.transform = "translateY(0)";
+            }
+        });
+    };
+
+    window.addEventListener("scroll", fadeInOnScroll);
+    fadeInOnScroll(); 
+});
+    </script>
+     {{end}}
+</body>
+</html>

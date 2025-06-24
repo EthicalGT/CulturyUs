@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs - Tourist Guide</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Forum</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">GIA</a></li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skills
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="tourist-guide">
+                <div class="tourismImgContainer">
+                </div>
+                <div class="tourismInfoContainer">
+                    <h1>Experience India with CulturyUs Tourist Guides...</h1>
+                    <p>Discover the vibrant culture, rich history, and breathtaking landscapes of India with CulturyUs Tourist Guides! Whether you're exploring the majestic forts of Rajasthan, the serene backwaters of Kerala, or the bustling streets of Delhi, our expert local guides will ensure you experience India like never before.</p>
+                    <a href="#main-containerII"><button>Lets Dive!</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="main-containerII" id="main-containerII">
+            <div class="tourismFormContainer">
+                <div class="infoContainer">
+                    <form action="/bookGuide" method="POST">
+                        <label>Select State: </label><br>
+                        <select name="state" id="states" onchange="changeStateImg()" required>
+                            <option value="">Select a State</option>
+                            <option value="andhra_pradesh">Andhra Pradesh</option>
+                            <option value="arunachal_pradesh">Arunachal Pradesh</option>
+                            <option value="assam">Assam</option>
+                            <option value="bihar">Bihar</option>
+                            <option value="chhattisgarh">Chhattisgarh</option>
+                            <option value="goa">Goa</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="haryana">Haryana</option>
+                            <option value="himachal_pradesh">Himachal Pradesh</option>
+                            <option value="jharkhand">Jharkhand</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="madhya_pradesh">Madhya Pradesh</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="manipur">Manipur</option>
+                            <option value="meghalaya">Meghalaya</option>
+                            <option value="mizoram">Mizoram</option>
+                            <option value="nagaland">Nagaland</option>
+                            <option value="odisha">Odisha</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="sikkim">Sikkim</option>
+                            <option value="tamil_nadu">Tamil Nadu</option>
+                            <option value="telangana">Telangana</option>
+                            <option value="tripura">Tripura</option>
+                            <option value="uttar_pradesh">Uttar Pradesh</option>
+                            <option value="uttarakhand">Uttarakhand</option>
+                            <option value="west_bengal">West Bengal</option>
+                          </select>
+                          <input type="submit" value="Next">
+                          </form>
+                    <p id="stateDesc">India is a land of immense cultural diversity, where each state tells a unique story through its traditions, history, and heritage. From the vibrant festivals of Rajasthan to the serene backwaters of Kerala, every region offers a distinct experience. Choose your destination wisely and embark on an unforgettable cultural adventure.</p>
+                </div>
+                <div class="imgContainer">
+                    <img src="/static/img/indian-culture.jpg" alt="img" id="stateImg">
+                </div>
+            </div>
+        </div>
+    </main>
+    <button id="guideBtn">Want to be Guide??</button>
+    <footer>
+        <div class="footer">
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+        <img src="/static/img/instagram.png" alt="instagram">
+        <img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp">
+        <img src="/static/img/github.png" alt="github">
+        </div>
+        <p>Crafted with <span>&hearts;</span> by <a href="">GT</a></p>
+        </div>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

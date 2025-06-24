@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul>
+                        <li><a href="/">Sign In</a></li>
+                        <li><a href="/">Sign UP</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="form-container" id="signinform">
+            <div class="form-div">
+            <h3>OTP Verification!</h3>
+            <br>
+            <form action="/response" method="POST" name="myform" onsubmit="return OTPvalidate()">
+                {{if .fullname}}
+                <div class="lbl">
+                <label for="tb1">Your Name: </label>
+                </div>
+                <input type="text" name="tb1" value={{.fullname}} readonly>
+                {{else}}
+                <p>No Data Fetched!</p>
+                {{end}}
+                {{if .contact}}
+                <div class="lbl">
+                    <label for="tb2">Contact No: </label>
+                </div>
+                <input type="text" name="tb2" value={{.contact}} readonly>
+                {{else}}
+                <p>No Data Fetched!</p>
+                {{end}}
+                {{if .email}}
+                <div class="lbl">
+                    <label for="tb2">Email: </label>
+                </div>
+                <input type="email" name="tb3" value={{.email}} readonly>
+                {{else}}
+                <p>No Data Fetched!</p>
+                {{end}}
+                <div class="lbl">
+                    <label for="tb2">OTP: </label>
+                </div>
+                <input type="text" name="tb" maxlength="6" placeholder="Enter OTP...">
+                <br>
+                <input type="submit" value="Verify OTP">
+            </form>
+            </div>
+            </div>
+    </main>
+    <footer>
+        <p>Crafted with <span>&hearts;</span> by GT</p>
+        <p>&copy; 2023 CulturyUs. All rights reserved.</p>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

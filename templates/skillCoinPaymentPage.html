@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EthicalPay - Payments</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>EthicalPay<span>Us</span> Payments</p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="payment-container">
+            
+            <div class="merchantDiv">
+                <div class="payingTo-container">
+                <h2>Paying To CulturyUs</h2>
+                <h2 id="skprice">₹</h2>
+                <h3>Select SkillCoins Pack</h3>
+                <select name="skcb" id="skillcoins" onchange="myfunc()">
+                    <option>Please select a plan...</option>
+                    <option value="50">₹50 for 15 SkillCoins</option>
+                    <option value="100">₹100 for 35 SkillCoins</option>
+                    <option value="200">₹200 for 75 SkillCoins</option>
+                    <option value="500">₹500 for 200 SkillCoins</option>
+                    <option value="1000">₹1000 for 450 SkillCoins</option>
+                </select>
+                </div>
+                <br>
+                <p>Choose Payment Option: </p>
+                    <ul>
+                        <li onclick="UPIFunc()">UPI</li>
+                        <li onclick="QRFunc()">QR</li>
+                        <li onclick="DCFunc()">Debit/Credit Card</li>
+                    </ul>
+                </div>
+                <div class="paymentMode">
+                    <div class="UPIDiv" id="UPIDiv">
+                        <h2>UPI Details</h2>
+                        <form action="" method="POST">
+                            <label for="upiId">UPI ID:</label>
+                            <input type="text" name="upiId" required>
+                            <input type="submit" value="Proceed"><br>
+                            <input type="reset" value="Cancel">
+                        </form>
+                    </div>
+                    <div class="QRDiv" id="QRDiv">
+                    <img src="/static/img/QR.jpg" alt="QR">
+                    <p>Pay Using any Platform</p>
+                    </div>
+                    <div class="debitcreditDiv" id="debitcreditDiv">
+                        <h2>Pay Using Debit/Credit Card</h2>
+                        <form action="" method="POST">
+                            <label for="tb2">Card No: </label><br>
+                            <input type="number" name="tb2" placeholder="XXXX XXXX XXXX XXXX" id="tb2"><br>
+                            <label for="tb3">Expiry Date:</label><br>
+                            <input type="month" name="tb3">
+                            <input type="submit" value="Validate">
+                        </form> 
+                    </div>
+                </div>
+        </div>
+    </main>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

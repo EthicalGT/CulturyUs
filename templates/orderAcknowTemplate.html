@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="/tourguide">Guide</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="/GIA">GIA</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="/news">News</a></li>
+                                    <li><a href="/forum">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skillshop
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="/skills">SkillShop</a></li>
+                                    <li onclick="redirecttoSell()">Sell</a></li>
+                                    <li><a href="/marketplace">Marketplace</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="">Cart</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="scPaymentContainer">
+            {{ if .paymentstatus}}
+            <div class="scPaymentInfo">
+            <h3>Purchase Details</h3>
+            <b>Payment Status: {{.paymentstatus}}</b><p></p>
+            <b>Payment DateTime: {{.datetime}}</b><p></p>
+            <b>Payment Amount: {{.amount}}</b><p></p>
+            <b>Payment Mode: {{.paymentmode}}</b><p></p>
+            {{if .successed }}
+            <span>Thank You for Shopping with CulturyUs!
+
+                This message confirms the successful purchase of your art piece. Your transaction has been processed, and your order is now being prepared for fulfillment.
+                
+                Please retain this confirmation for your records.
+                
+                Your chosen piece of art represents the cultural richness we cherish at CulturyUs.
+                We'll notify you as soon as it’s shipped or ready for pickup.
+                
+                Thank you for supporting local artistry and craftsmanship.
+                Happy Collecting & Growing with CulturyUs!
+                </span>
+                {{else}}
+                <span> Oops! Your Art Piece Order Was Unsuccessful
+
+                    Unfortunately, we couldn’t complete your transaction at this time.
+                    
+                    Please check your payment details and try placing the order again. If the issue persists, feel free to contact our support team for assistance.
+                    
+                    We apologize for the inconvenience and appreciate your patience.
+                    
+                    Thank you for being a part of CulturyUs – where culture meets creativity.</span>
+                    {{end}}
+                <br><br>
+                <center><span class="timerTag"></span></center>
+                </div>
+                {{else}}
+                <p>Oops ! No Data Found...</p>
+                {{end}}
+        </div>
+    </main> 
+    <footer>
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+        <a href="https://www.instagram.com/effortlessgt?igsh=MW10azA5aTBkaTYxbA=="><img src="/static/img/instagram.png" alt="instagram"></a>
+        <a href="https://wa.me/qr/TTCPPLO4MHO3B1"><img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp"></a>
+        <a href="https://github.com/EthicalGT?fbclid=PAZXh0bgNhZW0CMTEAAaYkRZs0dKtG1Kbx9kYW6MYHVpMAdLTGSBGJr8u3emIBRrJ72ytOWDZjuwg_aem_fj9EEMhqM8mIrldi3uq-2Q"><img src="/static/img/github.png" alt="github"></a>
+        </div>
+        
+        <p>Crafted with <span>&hearts;</span> by <a href="https://ethicalgt.github.io/EthicalGT/">GT</a></p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const fadeElements = document.querySelectorAll("body *");
+
+    const fadeInOnScroll = () => {
+        fadeElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 1.5) {
+                element.style.opacity = 1;
+                element.style.transform = "translateY(0)";
+            }
+        });
+    };
+
+    window.addEventListener("scroll", fadeInOnScroll);
+    fadeInOnScroll(); 
+});
+let time=30;
+
+const countDown=setInterval(()=>{
+    time--;
+    document.querySelector(".timerTag").innerHTML="You'll be redirected in "+time+"...";
+    if(time==0){
+        window.location="/marketplace";
+    }
+},1000);
+    </script>
+</body>
+</html>

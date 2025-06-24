@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GIA - CulturyUs Assistant</title>
+  <link rel="stylesheet" href="/static/css/styles2.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                    <li><a href="/tourguide">Guide</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">GIA</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skillshop
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+  <div class="main-wrapper">
+    <div class="chat-container">
+      <div class="offline-banner" id="offline-banner">⚠️ You are offline. Please check your internet connection.</div>
+      <div class="chat-header">GIA - CulturyUs Assistant</div>
+      <div class="chat-box" id="chat-box"></div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Ask me about any Indian state..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chat-box");
+    const offlineBanner = document.getElementById("offline-banner");
+
+    function appendMessage(content, sender, isTyping = false) {
+      const msg = document.createElement("div");
+      msg.className = `message ${sender}-message`;
+
+      const avatar = document.createElement("div");
+      avatar.className = `avatar ${sender}-avatar`;
+
+      const text = document.createElement("div");
+      if (isTyping) {
+        text.innerHTML = '<span class="typing-dots"></span><span class="typing-dots"></span><span class="typing-dots"></span>';
+        text.setAttribute("id", "typing-indicator");
+      } else {
+        text.textContent = sender === "bot" ? `GIA: ${content}` : content;
+      }
+
+      msg.appendChild(avatar);
+      msg.appendChild(text);
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function sendMessage() {
+  const input = document.getElementById("user-input");
+  const userText = input.value.trim();
+  if (!userText) return;
+
+  appendMessage(userText, "user");
+  input.value = "";
+
+  appendMessage("", "bot", true);
+  const lowerPrompt = userText.toLowerCase();
+  if (
+    lowerPrompt.includes("what does gia stand for") ||
+    lowerPrompt.includes("gia stands for") ||
+    lowerPrompt === "gia?" ||
+    lowerPrompt === "what is gia"
+  ) {
+    const typingIndicator = document.getElementById("typing-indicator");
+    if (typingIndicator && typingIndicator.parentElement) {
+      typingIndicator.parentElement.remove();
+    }
+
+    appendMessage("GIA stands for GT's Intelligent Assistant 🤖✨", "bot");
+    return;
+  }
+
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: userText }),
+    });
+
+    const data = await res.json();
+    const reply = data.response || "Sorry, no reply received.";
+
+    const typingIndicator = document.getElementById("typing-indicator");
+    if (typingIndicator && typingIndicator.parentElement) {
+      typingIndicator.parentElement.remove();
+    }
+
+    appendMessage(reply, "bot");
+    const audio = new Audio("/static/audio/reply-audio.mp3");
+audio.play().catch(error => console.log("Audio play error:", error));
+
+
+  } catch (error) {
+    const typingIndicator = document.getElementById("typing-indicator");
+    if (typingIndicator && typingIndicator.parentElement) {
+      typingIndicator.parentElement.remove();
+    }
+    appendMessage("Oops! Unable to connect to GIA right now.", "bot");
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const fadeElements = document.querySelectorAll("body *");
+
+    const fadeInOnScroll = () => {
+        fadeElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 1.5) {
+                element.style.opacity = 1;
+                element.style.transform = "translateY(0)";
+            }
+        });
+    };
+
+    window.addEventListener("scroll", fadeInOnScroll);
+    fadeInOnScroll(); 
+});
+
+
+  </script>
+</body>
+</html>

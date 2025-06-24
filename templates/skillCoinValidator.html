@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs - SkillCoin Validator</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">GIA</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skillshop
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+    <div class="main-container">
+        <center><h2>Skill Access Confirmation</h2></center>
+    <div class="skillcoin-container">
+        <div class="skillcoin-img">
+        <img src="/static/img/skillcoins.png" alt="skillcoin-img">
+        </div>
+        <div class="skillcoin-action">
+            {{if .skilltype}}
+            <h3>Unlock New Skills!</h3>
+            <p>Hey dear, {{.name}}.<br>Your Current Balanced SkillCoins: {{.skillcoins}}</p>
+        <p>
+            🌟 Do you want to access <span>{{.skilltype}}</span> and take your knowledge to the next level? It only costs 3 Skillcoins!
+            Confirm your purchase now and start mastering <span>{{.skilltype}}</span> today! 🚀          
+            Tap <b>“Confirm”</b> to unlock this skill resource now!</p>
+            <form action="/purchaseSkill" method="POST">
+                <input type="hidden" name="skillname" value={{.skilltype}}>
+                <input type="hidden" name="formStatus" value="OK">
+
+        <button type="submit" name="proceed" value="confirmed">Confirm</button>
+        
+        <a href="/skills"><button type="button">Cancel</button></a>
+
+    </form>
+        {{else}}
+        <h3>OOPS! Sorry😔 ...</h3>
+        <p>Skill is not available right now, We'll notify you whenever available !</p>
+        {{end}}
+        </div>
+    </div>
+    </div>
+    </main>
+    <footer>
+        <div class="footer">
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/the_gt_official?igsh=MW10azA5aTBkaTYxbA=="><img src="/static/img/instagram.png" alt="instagram"></a>
+            <a href="https://wa.me/qr/TTCPPLO4MHO3B1"><img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp"></a>
+            <a href="https://github.com/EthicalGT?fbclid=PAZXh0bgNhZW0CMTEAAaYkRZs0dKtG1Kbx9kYW6MYHVpMAdLTGSBGJr8u3emIBRrJ72ytOWDZjuwg_aem_fj9EEMhqM8mIrldi3uq-2Q"><img src="/static/img/github.png" alt="github"></a>
+        </div>
+        <p>Crafted with <span>&hearts;</span> by <a href="">GT</a></p>
+        </div>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

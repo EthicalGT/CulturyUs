@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs - Chat Forum</title>
+    <link rel="stylesheet" href="/static/css/styles3.css">
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body >
+  <header>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="/static/img/logo.png" alt="logo">
+                <p>Cultury<span>Us</span></p>
+            </div>
+            <div class="nav-links">
+                <div class="links">
+                <ul id="home-navs">
+                    <li><a href="">Home</a></li>
+                    <li id="tourism">Tourism
+                        <div class="tourism-menu">
+                            <ul>
+                                <li><a href="">Home</a></li>
+                                <li><a href="/tourguide">Guide</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="tourism">Featured
+                        <div class="tourism-menu">
+                            <ul>
+                                <li><a href="/GIA">GIA</a></li>
+                                <li><a href="">History</a></li>
+                                <li><a href="">Blog</a></li>
+                                <li><a href="/news">News</a></li>
+                                <li><a href="">Forum</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="tourism">Skillshop
+                        <div class="tourism-menu">
+                            <ul>
+                                <li><a href="/skills">SkillShop</a></li>
+                                <li><a href="">Sell</a></li>
+                                <li><a href="">Marketplace</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="">About us</a></li>
+                </ul>
+                </div>
+            </div>
+            </div>
+    <nav>
+</header>
+    <main>
+        <div class="container">
+            <div class="chat-window" id="chatWindow"></div>    
+        </div>
+        <div class="input-bar">
+          <input type="text" id="messageInput" placeholder="Type a message...">
+          <button onclick="sendMessage()">Send</button>
+      </div>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("JavaScript loaded ✅");
+    
+        const chatWindow = document.getElementById("chatWindow");
+        const inputField = document.getElementById("messageInput");
+    
+        // Get current user email from global variable set in HTML
+        const currentUserEmail = "{{.data.Email}}";  <!-- This will be replaced with actual email -->
+    
+        if (!chatWindow || !inputField || !currentUserEmail) {
+            console.error("Missing DOM elements or user email.");
+            return;
+        }
+    
+        // Handle sending message
+        function sendMessage() {
+            const message = inputField.value.trim();
+            if (!message) return;
+    
+            fetch("/forum/message", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    useremail: currentUserEmail,
+                    msg: message,
+                }),
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Message sent:", data);
+                inputField.value = "";
+                fetchMessages();
+            })
+            .catch((err) => console.error("Send error:", err));
+        }
+    
+        // Attach sendMessage to global for button onclick
+        window.sendMessage = sendMessage;
+    
+        // Fetch and display messages
+        function fetchMessages() {
+            fetch("/forum/messages")
+                .then((res) => res.json())
+                .then((messages) => {
+                    console.log("Fetched messages:", messages);
+    
+                    chatWindow.innerHTML = ""; // Clear previous messages
+    
+                    messages.forEach((m) => {
+                        const div = document.createElement("div");
+                        const isMe = m.Email === currentUserEmail;
+    
+                        div.classList.add("message", isMe ? "sent" : "received");
+    
+                        div.innerHTML = `
+                            <div class="user-info">
+                                <img src="${m.ProfilePic}" alt="User">
+                                <div class="email">${m.Email}</div>
+                            </div>
+                            <div class="text">${m.Msg}</div>
+                            <div class="timestamp">${new Date(m.Datetime).toLocaleString()}</div>
+                        `;
+    
+                        chatWindow.appendChild(div);
+                    });
+    
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+                })
+                .catch((err) => console.error("Fetch error:", err));
+        }
+        setInterval(fetchMessages, 7000);
+        fetchMessages(); // Initial fetch
+    });
+    </script>
+    
+</body>
+</html>

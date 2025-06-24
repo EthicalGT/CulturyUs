@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CulturyUs- SkillPage</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/img/logo.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="/static/img/logo.png" alt="logo">
+                    <p>Cultury<span>Us</span></p>
+                </div>
+                <div class="nav-links">
+                    <div class="links">
+                    <ul id="home-navs">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Forum</a></li>
+                        <li id="tourism">Tourism
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">GIA</a></li>
+                        <li id="tourism">Featured
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Blog</a></li>
+                                    <li><a href="">News</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id="tourism">Skills
+                            <div class="tourism-menu">
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">Forum</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+        <nav>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="certificate-container">
+                <h2>Generate Your Skill Certificate 🎓</h2>
+                    <p>Congratulations on unlocking a new skill! You can now generate a certificate to showcase your learning achievement. Simply click the button below to receive a personalized certificate, confirming your completion of the skill. This certificate can be a valuable addition to your portfolio or resume, helping you demonstrate your progress and commitment to skill development.<br>
+                        <b>✽</b> Personalized Certificate: Includes your name and the skill you've learned.<br>
+                        <b>✽</b> Instant Access: Get your certificate right away, without any delays.<br>
+                        <b>✽</b> Printable & Shareable: Download and print the certificate or share it digitally.<br>
+                    Take the next step in your learning journey and unlock more skills with us!
+                    </p>
+                    {{if .SkillCertificatePath}}
+                    <a href="{{.SkillCertificatePath}}" download><button>Download</button></a>
+                    {{else}}
+                    <p>No Certificate Generated!</p>
+                    {{end}}
+                </div>
+            </div>
+    </main>
+    <footer>
+        <div class="footer">
+        <p id="followus">Follow us on</p>
+        <div class="social-links">
+        <img src="/static/img/instagram.png" alt="instagram">
+        <img src="/static/img/whatsapp.png" alt="whatsapp" id="whatsapp">
+        <img src="/static/img/github.png" alt="github">
+        </div>
+        <p>Crafted with <span>&hearts;</span> by <a href="">GT</a></p>
+        </div>
+    </footer>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

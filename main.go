@@ -116,7 +116,7 @@ func comparePassword(storedHash, password string) (bool, error) {
 }
 
 func SendEmailAlertsForMultipleReqRejections(emails []string) (bool, error) {
-	from := abc@gmail.com"
+	from := "abc@gmail.com"
 	password := "null"
 	smtpHost := "smtp.gmail.com"
 	smtpPort := "587"
